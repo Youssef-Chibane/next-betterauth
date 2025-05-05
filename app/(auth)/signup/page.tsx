@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 
-export default function LoginPage() {
+export default function page() {
   return (
     <section className="flex min-h-screen bg-zinc-50 px-4 py-16 md:py-32 dark:bg-transparent">
       <form
@@ -17,7 +17,7 @@ export default function LoginPage() {
               <Icons.logo className="w-8 h-8" />
             </Link>
             <h1 className="text-title mb-1 mt-4 text-xl font-semibold">
-              Create a Tailark Account
+              Sign Up to Better-Auth Demo
             </h1>
             <p className="text-sm">Welcome! Create an account to get started</p>
           </div>
