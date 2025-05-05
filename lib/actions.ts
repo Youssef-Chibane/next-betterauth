@@ -45,7 +45,7 @@ export async function signUp(prevState: State, formdata: FormData) {
   const rawFormData = {
     email: formdata.get("email") as string,
     password: formdata.get("pwd") as string,
-    firstName: formdata.get("firstsname") as string,
+    firstName: formdata.get("firstname") as string,
     lastName: formdata.get("lastname") as string,
   };
 
