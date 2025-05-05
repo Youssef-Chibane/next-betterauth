@@ -1,15 +1,28 @@
+"use client";
+
 import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { signup } from "@/lib/actions";
+import { signUp } from "@/lib/actions";
 import Link from "next/link";
+import { useActionState, useEffect } from "react";
+import { toast } from "sonner";
 
 export default function SignUpForm() {
+  const initialState = { errorMessage: "" };
+  const [state, formAction, pending] = useActionState(signUp, initialState);
+
+  useEffect(() => {
+    if (state.errorMessage.length) {
+      toast.error(state.errorMessage);
+    }
+  }, [state]);
+
   return (
     <section className="flex min-h-screen bg-zinc-50 px-4 py-16 md:py-32 dark:bg-transparent">
       <form
-        action={signup}
+        action={formAction}
         className="bg-card m-auto h-fit w-full max-w-sm rounded-[calc(var(--radius)+.125rem)] border p-0.5 shadow-md dark:[--color-muted:var(--color-zinc-900)]"
       >
         <div className="p-8 pb-6">
@@ -72,7 +85,13 @@ export default function SignUpForm() {
               />
             </div>
 
-            <Button className="w-full">Continue</Button>
+            <Button
+              className="w-full"
+              disabled={pending}
+              aria-disabled={pending}
+            >
+              Continue
+            </Button>
           </div>
         </div>
 
