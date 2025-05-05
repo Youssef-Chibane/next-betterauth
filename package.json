@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@better-fetch/fetch": "^1.1.18",
     "@prisma/client": "6.7.0",
     "better-auth": "^1.2.7",
     "next": "15.3.1",
