@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "./auth/auth";
 import { APIError } from "better-auth/api";
+import { db } from "./prisma";
 
 interface State {
   errorMessage?: string | null;
@@ -73,4 +74,12 @@ export async function signUp(prevState: State, formdata: FormData) {
     console.error("sign up with email and password has not worked", error);
   }
   redirect("/dashboard");
+}
+
+export async function searchAccount(email: string) {
+  const user = await db.user.findUnique({
+    where: { email },
+  });
+
+  return !!user;
 }
