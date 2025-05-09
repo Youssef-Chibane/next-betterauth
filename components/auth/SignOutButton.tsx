@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Icons } from "../icons";
 import { signOut } from "@/lib/auth/auth-client";
 import { Button } from "../ui/button";
 
